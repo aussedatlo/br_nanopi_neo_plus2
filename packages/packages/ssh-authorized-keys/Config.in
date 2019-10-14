@@ -1,0 +1,17 @@
+config BR2_PACKAGE_SSH_AUTH_KEYS
+    bool "install public key"
+	  depends on BR2_PACKAGE_OPENSSH
+    help
+      Install public key on target
+
+config BR2_PACKAGE_SSH_AUTH_KEYS_USER
+    string "user"
+    depends on BR2_PACKAGE_SSH_AUTH_KEYS
+    help
+      user to install the key
+
+config BR2_PACKAGE_SSH_AUTH_KEYS_PATH
+    string "path"
+    depends on BR2_PACKAGE_SSH_AUTH_KEYS
+    help
+      path to the public key
