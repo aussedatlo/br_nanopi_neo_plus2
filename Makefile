@@ -1,80 +1,61 @@
 root_dir:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 external_tree = ${root_dir}/packages
 external_conf = ${root_dir}/configs
+img = ${root_dir}/buildroot/output/images/sdcard.img
 
 .DEFAULT_GOAL := build
 
-
-TARGET_SAVED_FILE := .target
-ifneq (,$(wildcard $(TARGET_SAVED_FILE)))
-TARGET_SAVED := $(shell cat .target)
-endif
-ifeq ($(TARGET),)
-TARGET := $(TARGET_SAVED)
-endif
-
-.PHONY: target
-target:
-	@$(call print-info,Target is:,${TARGET})
-
 .PHONY: target-list
 target-list:
+	@$(call print-info,available defconfigs:,)
 	@$(call list-defconfigs,$(TOPDIR))
 
-build: target init-defconfig
-	@$(call print-info,Building:,${TARGET}_defconfig)
-	@cd buildroot && make 2> /dev/null | grep ">>>"
-	@mkdir -p ./images
-	cp ./buildroot/output/images/*.img ./images
-
-.PHONY: check-defconfig
-check-defconfig:
-	@if [ ! -f ${external_conf}/${TARGET}_defconfig ]; then \
-		echo TARGET is unknown; \
+.PHONY: %_defconfig
+%_defconfig:
+	@if [ ! -f ${external_conf}/$@ ]; then \
+		echo no config file found for $@; \
 		exit 1; \
 	fi
-
-.PHONY: init-defconfig
-init-defconfig: check-defconfig .target
-	@$(call print-info,Setting config file:,$(TARGET)_defconfig)
-	@cd buildroot && make BR2_EXTERNAL=${external_tree} defconfig BR2_DEFCONFIG=${external_conf}/$(TARGET)_defconfig
-
-.target:
-	@echo $(TARGET) > .target
+	@$(call print-info,using config file:,$@)
+	@cd buildroot && make BR2_EXTERNAL=${external_tree} \
+		${external_conf}/$@
 
 %:
-	cd buildroot && make $@
+	echo "transfert $@ to buildroot"
+	@cd buildroot && make $@
 
-.PHONY: clean
-clean:
-	rm .target
-	cd buildroot && make clean
+build:
+ifdef silent
+	@$(call print-info,starting silent build,)
+	mkdir images
+	@cd buildroot && make | grep ">>>"
+else
+	@$(call print-info,starting build,)
+	@cd buildroot && make
+endif
+	cp ${img} ./images/
 
 .PHONY: help
 help:
-	@echo "First use, don't forget to set TARGET variable"
-	@echo "If you set it one time, she will be stored in"
-	@echo ".target file, you don't need to set it each time."
+	@echo "All unknown command will be transfered to buildroot"
 	@echo ""
-	@echo "build	 		- make target"
-	@echo "init-defconfig		- set a defconfig to buildroot config"
-	@echo "check-defconfig		- check if config exist"
+	@echo "build (default)		- compile distribution, use silent=1 for silent build"
+	@echo "<target>_defconfig	- set <target> defconfig"
 	@echo "target-list		- list all defconfigs in ./configs"
-	@echo "target			- print actual defconfig in use"
-	@echo "help-buildroot		- print buildroot help"
+	@echo "buildroot-help		- print buildroot help"
+	@echo "help			- print this help"
 
 .PHONY: help-buildroot
-help-buildroot:
+buildroot-help:
 	cd buildroot && make help
 
 define list-defconfigs
 	for defconfig in configs/*_defconfig; do \
 		defconfig="$${defconfig##*/}"; \
-		echo - $${defconfig}; \
-	done; \
-
+		echo $${defconfig}; \
+	done;
 endef
 
 define print-info
-	/bin/echo -e "\n\e[1;34m$(1) \e[0m$(2)"
+	/bin/echo -e "- \e[1;34m$(1) \e[0m$(2)"
 endef
