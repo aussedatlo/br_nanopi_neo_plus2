@@ -17,8 +17,8 @@ target-list:
 		exit 1; \
 	fi
 	@$(call print-info,using config file:,$@)
-	@cd buildroot && make BR2_EXTERNAL=${external_tree} \
-		${external_conf}/$@
+	@cd buildroot && make defconfig BR2_EXTERNAL=${external_tree} \
+		DEFCONFIG=${external_conf}/$@
 
 %:
 	echo "transfert $@ to buildroot"
