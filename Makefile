@@ -21,7 +21,7 @@ target-list:
 		DEFCONFIG=${external_conf}/$@
 
 %:
-	echo "transfert $@ to buildroot"
+	@echo "transfert $@ to buildroot"
 	@cd buildroot && make $@
 
 build:
