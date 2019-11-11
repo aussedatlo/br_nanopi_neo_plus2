@@ -35,10 +35,18 @@ else
 endif
 	cp ${img} ./images/
 
+.PHONY: clean-soft
+clean-soft:
+	@find buildroot/output/build -maxdepth 1 -type d -print | grep -Ev "host|libc|linux-headers" | sed "1 d" | xargs rm -rf
+	@rm -rf buildroot/output/images images/* buildroot/output/target
+
 .PHONY: help
 help:
 	@echo "All unknown command will be transfered to buildroot"
 	@echo ""
+	@echo "build (default)		- compile distribution, use silent=1 for silent build"
+	@echo "clean			- clean all"
+	@echo "clean-soft		- clean only non host package and rebuild target folder"
 	@echo "build (default)		- compile distribution, use silent=1 for silent build"
 	@echo "<target>_defconfig	- set <target> defconfig"
 	@echo "target-list		- list all defconfigs in ./configs"
