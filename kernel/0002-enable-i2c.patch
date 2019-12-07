@@ -1,0 +1,23 @@
+--- a/arch/arm64/boot/dts/allwinner/sun50i-h5-nanopi-neo-plus2.dts
++++ b/arch/arm64/boot/dts/allwinner/sun50i-h5-nanopi-neo-plus2.dts
+@@ -200,3 +200,20 @@
+ 	/* USB Type-A ports' VBUS is always on */
+ 	status = "okay";
+ };
++
++&i2c0 {
++    status = "okay";
++    rtc@68 {
++            compatible = "dallas,ds1307";
++            reg = <0x68>;
++    };
++};
++
++&i2c1 {
++    /* no I2C1 for I2S0 */
++    status = "okay";
++};
++
++&i2c2 {
++    status = "okay";
++};
