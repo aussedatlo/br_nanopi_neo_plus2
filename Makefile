@@ -38,7 +38,7 @@ endif
 
 .PHONY: clean-soft
 clean-soft:
-	@find buildroot/output/build -maxdepth 1 -type d -print | grep -Ev "host|libc|linux-headers" | sed "1 d" | xargs rm -rf
+	@find buildroot/output/build -maxdepth 1 -type d -print | grep -Ev "host|linux-headers" | sed "1 d" | xargs rm -rf
 	@rm -rf buildroot/output/images images/* buildroot/output/target
 
 .PHONY: help
