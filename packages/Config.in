@@ -1,2 +1,2 @@
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/ssh-authorized-keys/Config.in"
-
+source "$BR2_EXTERNAL_PACKAGES_PATH/packages/rtl8189es/Config.in"
