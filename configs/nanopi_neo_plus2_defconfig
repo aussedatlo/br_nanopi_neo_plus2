@@ -8,7 +8,7 @@ BR2_ROOTFS_DEVICE_CREATION_DYNAMIC_MDEV=y
 # BR2_TARGET_ENABLE_ROOT_LOGIN is not set
 BR2_SYSTEM_BIN_SH_BASH=y
 BR2_ROOTFS_USERS_TABLES="$(TOPDIR)/../configs/users_table.txt"
-BR2_ROOTFS_OVERLAY="board/friendlyarm/nanopi-neo-plus2/rootfs_overlay $(TOPDIR)/../overlays/custom"
+BR2_ROOTFS_OVERLAY="board/friendlyarm/nanopi-neo-plus2/rootfs_overlay $(TOPDIR)/../overlays/nanopi-neo-plus2"
 BR2_ROOTFS_POST_BUILD_SCRIPT="board/friendlyarm/nanopi-neo-plus2/post-build.sh"
 BR2_ROOTFS_POST_IMAGE_SCRIPT="support/scripts/genimage.sh"
 BR2_ROOTFS_POST_SCRIPT_ARGS="-c board/friendlyarm/nanopi-neo-plus2/genimage.cfg"
