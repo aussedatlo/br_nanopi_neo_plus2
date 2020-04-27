@@ -1,0 +1,11 @@
+###### PROMPT ######
+if [ "$UID" -ge 500 ] ; then
+        PS1='[\[\033[0;34m\]\t\[\e[0;m\]]: \[\e[0;32m\]\u\[\033[00m\]@\[\e[0;32m\]\h\[\033[0;34m\] \W \$\[\033[00m\] '
+fi
+if [ "$UID" -eq 0 ] ; then
+        PS1='[\[\033[0;34m\]\t\[\e[0;m\]]: \[\e[0;31m\]\u@\h\[\033[0;34m\] \W \$\[\033[00m\] '
+fi
+###### ALIASES ######
+alias ls="ls --color"
+alias grep="grep --color"
+alias ll="ls -la"

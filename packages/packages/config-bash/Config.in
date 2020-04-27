@@ -1,0 +1,4 @@
+config BR2_CONFIG_BASH
+	bool "config-bash"
+	help
+	  Configure bash.
