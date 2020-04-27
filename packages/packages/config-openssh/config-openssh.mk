@@ -19,5 +19,5 @@ config-openssh-add-key:
 	done
 
 ifneq ($(BR2_CONFIG_OPENSSH_INSTALL_KEY),)
-TARGETS_CONFIGURE += config-openssh-add-key
+TARGET_CONFIGURE += config-openssh-add-key
 endif
