@@ -1,0 +1,16 @@
+menu "configurint openssh"
+
+config BR2_CONFIG_OPENSSH
+	bool "config-openssh"
+	select BR2_PACKAGE_OPENSSH
+	help
+	  Configure openssh.
+
+config BR2_CONFIG_OPENSSH_INSTALL_KEY
+	string "install public key"
+	depends on  BR2_CONFIG_OPENSSH
+	default "~/.ssh/id_rsa.pub"
+	help
+	  Install public key on target.
+
+endmenu
