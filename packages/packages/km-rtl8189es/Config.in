@@ -1,0 +1,8 @@
+config BR2_PACKAGE_KM_RTL8189ES
+	bool "rtl8189 kernel module"
+	depends on BR2_LINUX_KERNEL
+	help
+	  Kernel module to support rtl8189es.
+
+comment "RTL8189ES module requires a linux kernel to be built"
+	depends on !BR2_LINUX_KERNEL
