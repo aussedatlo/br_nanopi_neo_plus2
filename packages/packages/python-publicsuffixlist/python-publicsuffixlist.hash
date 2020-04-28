@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/publicsuffixlist/json
+md5  368c472e7c9b3544533537897c290fd4  publicsuffixlist-0.6.13.tar.gz
+sha256  d9c847b72847a6077eca0f3d2ddbb2691b11586aab75bd61c8c902b2dc587de5  publicsuffixlist-0.6.13.tar.gz
+# Locally computed sha256 checksums
+sha256  60222c28c1a7f6a92c7df98e5c5f4459e624e6e285e0b9b94467af5f6ab3343d  LICENSE
