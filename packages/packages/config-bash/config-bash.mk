@@ -4,9 +4,7 @@
 #
 ################################################################################
 
-CONFIG_OPENSSH_USER_KEY = $(call qstrip,$(BR2_CONFIG_OPENSSH_INSTALL_KEY))
-
-CONFIG_BASH_SRC := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))/src
+CONFIG_BASH_SRC := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))src
 
 config-bash-add-bashrc:
 	@$(call MESSAGE,"Configuring bash")
@@ -19,10 +17,10 @@ config-bash-add-bashrc:
 config-bash-profile:
 	@USERS=$$(find $(TARGET_DIR)/home -maxdepth 1 -type d | tail -n+2 ); \
 	for user in $$USERS $(TARGET_DIR)/root; do \
-		if ! grep -q ".bashrc" $$user/.profile; then \
-			echo "INFO: completing .profile for user $$(basename $$user)"; \
-			cat $(CONFIG_BASH_SRC)/profile.fragment >> $$user/.profile; \
-		fi; \
+		$(call ADD_FRAGMENT_FILE,\
+			$$user/.profile,\
+			$(CONFIG_BASH_SRC)/profile.fragment,\
+			".bashrc"); \
 	done
 
 
