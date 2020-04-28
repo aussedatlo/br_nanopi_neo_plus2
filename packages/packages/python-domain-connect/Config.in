@@ -1,0 +1,13 @@
+config BR2_PACKAGE_PYTHON_DOMAIN_CONNECT
+	bool "python-domain-connect"
+	select BR2_PACKAGE_PYTHON_CRYPTOGRAPHY # runtime
+	select BR2_PACKAGE_PYTHON_DNSPYTHON # runtime
+	select BR2_PACKAGE_PYTHON_FUTURE # runtime
+	select BR2_PACKAGE_PYTHON_PUBLICSUFFIX # runtime
+	select BR2_PACKAGE_PYTHON_PUBLICSUFFIXLIST # runtime
+	select BR2_PACKAGE_PYTHON_SIX # runtime
+	help
+	  Python client library for Domain Connect protocol. See:
+	  https://domainconnect.org.
+
+	  https://github.com/Domain-Connect/domainconnect_python

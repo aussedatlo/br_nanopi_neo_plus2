@@ -3,5 +3,6 @@ source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-openssh/Config.in"
 
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/km-rtl8189es/Config.in"
 
+source "$BR2_EXTERNAL_PACKAGES_PATH/packages/python-domain-connect/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/python-publicsuffix/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/python-publicsuffixlist/Config.in"
