@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/domain-connect-dyndns/json
+md5  b6838f25954dfb945d9bdc6bb2837704  domain-connect-dyndns-0.0.6.tar.gz
+sha256  f354bb16617a69e247cf3b284a7b3349f07227cdd260134aa2b1a622d30cce23  domain-connect-dyndns-0.0.6.tar.gz
+# Locally computed sha256 checksums
+sha256  f49ac0ca5f901e5c894bef86261628da2e47e5a0e9a3387512537390811e6207  LICENSE

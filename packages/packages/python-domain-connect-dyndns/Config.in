@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PYTHON_DOMAIN_CONNECT_DYNDNS
+	bool "python-domain-connect-dyndns"
+	select BR2_PACKAGE_PYTHON_DNSPYTHON # runtime
+	select BR2_PACKAGE_PYTHON_DOMAIN_CONNECT # runtime
+	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
+	select BR2_PACKAGE_PYTHON_VALIDATORS # runtime
+	help
+	  Python client library for Dynamic DNS using Domain Connect.
+
+	  https://github.com/Domain-Connect/DomainConnectDDNS-Python
