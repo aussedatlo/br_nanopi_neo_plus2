@@ -1,0 +1,12 @@
+
+## Start an FastCGI server for php
+fastcgi.server = ( ".php" => ((
+                     "bin-path" => "/usr/bin/php-cgi",
+                     "socket" => "/tmp/php.socket",
+                     "max-procs" => 1,
+                     "bin-environment" => (
+                       "PHP_FCGI_CHILDREN" => "16",
+                       "PHP_FCGI_MAX_REQUESTS" => "10000"
+                     ),
+                     "broken-scriptfilename" => "enable"
+                 )))

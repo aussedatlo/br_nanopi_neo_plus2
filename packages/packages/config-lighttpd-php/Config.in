@@ -1,0 +1,17 @@
+menu "config-lighttpd-php"
+
+config BR2_PACKAGE_CONFIG_LIGHTTPD_PHP
+	bool "basic configuration"
+	select BR2_PACKAGE_LIGHTTPD
+	select BR2_PACKAGE_PHP
+	select BR2_PACKAGE_LIGHTTPD_PCRE
+	help
+	  Basic configuration to run php with lighttpd.
+
+config BR2_PACKAGE_CONFIG_LIGHTTPD_PHP_EXAMPLE
+	bool "php example"
+	depends on BR2_PACKAGE_CONFIG_LIGHTTPD_PHP
+	help
+	  Basic php page installed in /var/www/example.
+
+endmenu
