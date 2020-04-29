@@ -1,9 +1,13 @@
+# config packages
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-bash/Config.in"
+source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-fstab/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-lighttpd-php/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-openssh/Config.in"
 
+# kernel modules packages
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/km-rtl8189es/Config.in"
 
+# softwares packages
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/python-domain-connect/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/python-domain-connect-dyndns/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/python-publicsuffix/Config.in"
