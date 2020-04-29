@@ -1,0 +1,30 @@
+menu "config-iptables"
+
+config BR2_PACKAGE_CONFIG_IPTABLES
+	bool "basic configuration"
+	select BR2_PACKAGE_IPTABLES
+	help
+	  Block all input/output traffic.
+
+config BR2_PACKAGE_CONFIG_IPTABLES_PORTS
+	string "ports"
+	default "22 80 443"
+	depends on BR2_PACKAGE_CONFIG_IPTABLES
+	help
+	  Allow some TCP ports, separated by one space.
+
+config BR2_PACKAGE_CONFIG_IPTABLES_ALLOW_PING
+	bool "ping"
+	default "y"
+	depends on BR2_PACKAGE_CONFIG_IPTABLES
+	help
+	  Allow Ping requests.
+
+config BR2_PACKAGE_CONFIG_IPTABLES_ALLOW_DNS
+	bool "dns"
+	default "y"
+	depends on BR2_PACKAGE_CONFIG_IPTABLES
+	help
+	  Allow DNS requests.
+
+endmenu
