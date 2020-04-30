@@ -25,21 +25,21 @@ config-iptables:
 
 config-iptables-ping:
 	@echo "INFO: Allow ping requests"
-	echo "" >> $(TARGET_DIR)/etc/init.d/S35iptables; \
-	echo "# Allow ping requests" >> $(TARGET_DIR)/etc/init.d/S35iptables; \
-	echo "iptables -A OUTPUT -p icmp -j ACCEPT" \
-		>> $(TARGET_DIR)/etc/init.d/S35iptables; \
-	echo "iptables -A INPUT  -p icmp  -j ACCEPT" \
-			>> $(TARGET_DIR)/etc/init.d/S35iptables; \
+	@echo "" >> $(TARGET_DIR)/etc/init.d/S35iptables
+	@echo "# Allow ping requests" >> $(TARGET_DIR)/etc/init.d/S35iptables
+	@echo "iptables -A OUTPUT -p icmp -j ACCEPT" \
+		>> $(TARGET_DIR)/etc/init.d/S35iptables
+	@echo "iptables -A INPUT  -p icmp  -j ACCEPT" \
+			>> $(TARGET_DIR)/etc/init.d/S35iptables
 
 config-iptables-dns:
 	@echo "INFO: Allow ping requests"
-	echo "" >> $(TARGET_DIR)/etc/init.d/S35iptables; \
-	echo "# Allow DNS requests" >> $(TARGET_DIR)/etc/init.d/S35iptables; \
-	echo "iptables -A INPUT -p udp --dport 53 -j ACCEPT" \
-		>> $(TARGET_DIR)/etc/init.d/S35iptables;
-	echo "iptables -A OUTPUT -p udp --dport 53 -j ACCEPT" \
-			>> $(TARGET_DIR)/etc/init.d/S35iptables;
+	@echo "" >> $(TARGET_DIR)/etc/init.d/S35iptables
+	@echo "# Allow DNS requests" >> $(TARGET_DIR)/etc/init.d/S35iptables
+	@echo "iptables -A INPUT -p udp --dport 53 -j ACCEPT" \
+		>> $(TARGET_DIR)/etc/init.d/S35iptables
+	@echo "iptables -A OUTPUT -p udp --dport 53 -j ACCEPT" \
+			>> $(TARGET_DIR)/etc/init.d/S35iptables
 
 config-iptables-allow-output:
 	@$(call REPLACE_LINE,iptables -P OUTPUT DROP,iptables -P OUTPUT ACCEPT,\
