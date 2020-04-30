@@ -26,3 +26,14 @@ define ADD_LINE_AFTER
 		echo "INFO:$(3) already configured"; \
 	fi
 endef
+
+# 1: str to replace, 2: new str, 3: file
+# Replace a line after a match in a file
+define REPLACE_LINE
+	if ! grep -q "$(2)" $(3); then \
+		echo "INFO: adding $(2) in $(3)"; \
+		sed -i 's/$(1)/$(2)/g' $(3); \
+	else \
+		echo "INFO:$(3) already configured"; \
+	fi
+endef

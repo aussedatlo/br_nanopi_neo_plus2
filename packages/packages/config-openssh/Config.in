@@ -13,4 +13,11 @@ config BR2_CONFIG_OPENSSH_INSTALL_KEY
 	help
 	  Install public key on target.
 
+config BR2_CONFIG_OPENSSH_INSTALL_BANNER
+	bool "install warning banner"
+	depends on  BR2_CONFIG_OPENSSH
+	default "y"
+	help
+	  Install warning banner /etc/banner.txt.
+
 endmenu
