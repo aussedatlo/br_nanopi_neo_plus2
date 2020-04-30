@@ -6,6 +6,26 @@ config BR2_PACKAGE_CONFIG_IPTABLES
 	help
 	  Block all input/output traffic.
 
+if BR2_PACKAGE_CONFIG_IPTABLES
+choice
+	prompt "Blocking mode"
+	help
+	  Block input/output traffic.
+
+config BR2_PACKAGE_CONFIG_IPTABLES_INPUT_OUTPUT
+	bool "input/output"
+	help
+	  Blocking input and output traffic.
+
+config BR2_PACKAGE_CONFIG_IPTABLES_INPUT
+	bool "input"
+	default "y"
+	help
+	  Blocking only input traffic.
+
+endchoice
+endif
+
 config BR2_PACKAGE_CONFIG_IPTABLES_PORTS
 	string "ports"
 	default "22 80 443"

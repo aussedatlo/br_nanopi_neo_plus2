@@ -37,9 +37,14 @@ config-iptables-dns:
 	echo "" >> $(TARGET_DIR)/etc/init.d/S35iptables; \
 	echo "# Allow DNS requests" >> $(TARGET_DIR)/etc/init.d/S35iptables; \
 	echo "iptables -A INPUT -p udp --dport 53 -j ACCEPT" \
-		>> $(TARGET_DIR)/etc/init.d/S35iptables; \
+		>> $(TARGET_DIR)/etc/init.d/S35iptables;
 	echo "iptables -A OUTPUT -p udp --dport 53 -j ACCEPT" \
-			>> $(TARGET_DIR)/etc/init.d/S35iptables; \
+			>> $(TARGET_DIR)/etc/init.d/S35iptables;
+
+config-iptables-allow-output:
+	@$(call REPLACE_LINE,iptables -P OUTPUT DROP,iptables -P OUTPUT ACCEPT,\
+		$(TARGET_DIR)/etc/init.d/S35iptables)
+	@echo "INFO: allowing output traffic"
 
 ifeq ($(BR2_PACKAGE_CONFIG_IPTABLES),y)
 TARGET_CONFIGURE += config-iptables
@@ -51,4 +56,8 @@ endif
 
 ifeq ($(BR2_PACKAGE_CONFIG_IPTABLES_ALLOW_DNS),y)
 TARGET_CONFIGURE += config-iptables-dns
+endif
+
+ifeq ($(BR2_PACKAGE_CONFIG_IPTABLES_INPUT),y)
+TARGET_CONFIGURE += config-iptables-allow-output
 endif
