@@ -57,13 +57,13 @@ config-iptables-allow-output:
 
 config-iptables-sshguard:
 	@echo "INFO: setting up iptables for sshguard"
-	$(call ADD_LINE_AFTER,\
+	@$(call ADD_LINE_AFTER,\
 		iptables -A INPUT -j sshguard,iptables -X,\
 		$(TARGET_DIR)/etc/init.d/S35iptables)
-	$(call ADD_LINE_AFTER,\
+	@$(call ADD_LINE_AFTER,\
 		iptables -N sshguard,iptables -X,\
 		$(TARGET_DIR)/etc/init.d/S35iptables)
-	$(call ADD_LINE_AFTER,\
+	@$(call ADD_LINE_AFTER,\
 		\\n# Enable sshguard,iptables -X,\
 		$(TARGET_DIR)/etc/init.d/S35iptables)
 	sed -i '/iptables/d' $(TARGET_DIR)/etc/init.d/S49sshguard
