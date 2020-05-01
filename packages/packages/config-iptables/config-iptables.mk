@@ -41,6 +41,15 @@ config-iptables-dns:
 	@echo "iptables -A OUTPUT -p udp --dport 53 -j ACCEPT" \
 			>> $(TARGET_DIR)/etc/init.d/S35iptables
 
+config-iptables-ntp:
+	@echo "INFO: Allow ntp requests"
+	@echo "" >> $(TARGET_DIR)/etc/init.d/S35iptables
+	@echo "# Allow NTP requests" >> $(TARGET_DIR)/etc/init.d/S35iptables
+	@echo "iptables -A INPUT -p udp --dport 123 -j ACCEPT" \
+		>> $(TARGET_DIR)/etc/init.d/S35iptables
+	@echo "iptables -A OUTPUT -p udp --dport 123 -j ACCEPT" \
+			>> $(TARGET_DIR)/etc/init.d/S35iptables
+
 config-iptables-allow-output:
 	@$(call REPLACE_LINE,iptables -P OUTPUT DROP,iptables -P OUTPUT ACCEPT,\
 		$(TARGET_DIR)/etc/init.d/S35iptables)
@@ -77,4 +86,8 @@ endif
 
 ifeq ($(BR2_PACKAGE_SSHGUARD),y)
 TARGET_CONFIGURE += config-iptables-sshguard
+endif
+
+ifeq ($(BR2_PACKAGE_OPENNTPD),y)
+TARGET_CONFIGURE += config-iptables-ntp
 endif
