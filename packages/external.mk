@@ -19,7 +19,7 @@ endef
 # 1: str to add, 2: str to match, 3: file
 # Add a line after a match in a file
 define ADD_LINE_AFTER
-	if ! grep -q "$(1)" $(3); then \
+	if ! grep -q "$$(echo $(1))" $(3); then \
 		echo "INFO: adding $(1) in $(3)"; \
 		sed -i '/$(2)/a$(1)' $(3); \
 	else \
