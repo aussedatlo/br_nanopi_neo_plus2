@@ -1,0 +1,6 @@
+config BR2_PACKAGE_CONFIG_DOMAIN_CONNECT_DYNDNS
+	bool "config-domain-connect-dyndns"
+	select BR2_PACKAGE_DCRON
+	select BR2_PACKAGE_PYTHON_DOMAIN_CONNECT_DYNDNS
+	help
+	  Basic configuration for domain-connect-dyndns with cron.
