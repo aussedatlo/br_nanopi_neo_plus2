@@ -1,0 +1,6 @@
+# automount removable devices
+sd[a-z]           0:6     660
+mmcblk[0-9]       0:6     660
+sd[a-z][0-9]      0:6     660 */lib/mdev/automounter.sh
+mmcblk[0-9]p[0-9] 0:6     660 */lib/mdev/automounter.sh
+

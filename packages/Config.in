@@ -1,8 +1,8 @@
 # config packages
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-bash/Config.in"
-source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-fstab/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-iptables/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-lighttpd-php/Config.in"
+source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-mdev/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-openssh/Config.in"
 
 # kernel modules packages
