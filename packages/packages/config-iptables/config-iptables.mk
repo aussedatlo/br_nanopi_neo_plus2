@@ -66,7 +66,17 @@ config-iptables-sshguard:
 	@$(call ADD_LINE_AFTER,\
 		\\n# Enable sshguard,iptables -X,\
 		$(TARGET_DIR)/etc/init.d/S35iptables)
-	sed -i '/iptables/d' $(TARGET_DIR)/etc/init.d/S49sshguard
+	@sed -i '/iptables/d' $(TARGET_DIR)/etc/init.d/S49sshguard
+
+config-iptables-domain-connect:
+	@echo "INFO: setting up iptables for domain-connect"
+	@echo "" >> $(TARGET_DIR)/etc/init.d/S35iptables
+	@echo "# Allow domain-connect requests" \
+		>> $(TARGET_DIR)/etc/init.d/S35iptables
+	@echo "iptables -t filter -A OUTPUT -p TCP --dport 443 -j ACCEPT" \
+		>> $(TARGET_DIR)/etc/init.d/S35iptables
+	@echo "iptables -t filter -A INPUT -p TCP --sport 443 -j ACCEPT" \
+		>> $(TARGET_DIR)/etc/init.d/S35iptables
 
 ifeq ($(BR2_PACKAGE_CONFIG_IPTABLES),y)
 TARGET_CONFIGURE += config-iptables
@@ -90,4 +100,8 @@ endif
 
 ifeq ($(BR2_PACKAGE_OPENNTPD),y)
 TARGET_CONFIGURE += config-iptables-ntp
+endif
+
+ifeq ($(BR2_PACKAGE_PYTHON_DOMAIN_CONNECT),y)
+TARGET_CONFIGURE += config-iptables-domain-connect
 endif
