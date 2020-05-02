@@ -1,4 +1,4 @@
 #!/bin/sh
 
-domain-connect-dyndns update --all --config /etc/ddns/ddns.conf \
+cd /root && domain-connect-dyndns update --all \
     2>&1 >> /tmp/domain-connect-dyndns.log
