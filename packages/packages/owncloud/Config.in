@@ -1,0 +1,16 @@
+config BR2_PACKAGE_OWNCLOUD
+	bool "owncloud-core"
+	# select BR2_PACKAGE_PHP_EXT_PDO
+	# select BR2_PACKAGE_PHP_EXT_GD
+	# select BR2_PACKAGE_PHP_EXT_SIMPLEXML
+	select BR2_PACKAGE_PHP_EXT_SQLITE
+	# select BR2_PACKAGE_PHP_EXT_XML
+	# select BR2_PACKAGE_PHP_EXT_XMLREADER
+	# select BR2_PACKAGE_PHP_EXT_XMLWRITER
+	select BR2_PACKAGE_SQLITE
+	help
+	  ownCloud gives you freedom and control over
+	  your own data. A personal cloud which runs
+	  on your own server.
+
+	  https://owncloud.org/

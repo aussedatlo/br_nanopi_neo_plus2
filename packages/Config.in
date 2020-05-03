@@ -11,6 +11,7 @@ source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-sudo-pam/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/km-rtl8189es/Config.in"
 
 # softwares packages
+source "$BR2_EXTERNAL_PACKAGES_PATH/packages/owncloud/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/python-domain-connect/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/python-domain-connect-dyndns/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/python-publicsuffix/Config.in"
