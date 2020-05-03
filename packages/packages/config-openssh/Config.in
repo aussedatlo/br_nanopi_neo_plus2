@@ -1,4 +1,4 @@
-menu "configuring openssh"
+menu "config-openssh"
 
 config BR2_CONFIG_OPENSSH
 	bool "config-openssh"
