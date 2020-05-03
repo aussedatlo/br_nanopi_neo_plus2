@@ -1,0 +1,52 @@
+menu "config-dhcpd"
+
+config BR2_PACKAGE_CONFIG_DHCPD
+	bool "basic configuration"
+	select BR2_PACKAGE_DHCP
+	select BR2_PACKAGE_DHCP_SERVER
+	help
+	  Basic configuration for dhcpd.
+
+config BR2_PACKAGE_CONFIG_DHCPD_SUBNET
+	string "subnet"
+	default "10.10.0.0"
+	depends on BR2_PACKAGE_CONFIG_DHCPD
+	help
+	  Subnet.
+
+config BR2_PACKAGE_CONFIG_DHCPD_NETMASK
+	string "netmask"
+	default "255.255.255.0"
+	depends on BR2_PACKAGE_CONFIG_DHCPD
+	help
+	  Netmask.
+
+config BR2_PACKAGE_CONFIG_DHCPD_RANGE_MIN
+	string "range min"
+	default "10.10.0.2"
+	depends on BR2_PACKAGE_CONFIG_DHCPD
+	help
+	  Minimum ip address.
+
+config BR2_PACKAGE_CONFIG_DHCPD_RANGE_MAX
+	string "range max"
+	default "10.10.0.199"
+	depends on BR2_PACKAGE_CONFIG_DHCPD
+	help
+	  Maximum ip address.
+
+config BR2_PACKAGE_CONFIG_DHCPD_DOMAIN_NAME
+	string "domain name"
+	default "10.10.0.253"
+	depends on BR2_PACKAGE_CONFIG_DHCPD
+	help
+	  Domain name servers.
+
+config BR2_PACKAGE_CONFIG_DHCPD_ROUTERS
+	string "routers"
+	default "10.10.0.254"
+	depends on BR2_PACKAGE_CONFIG_DHCPD
+	help
+	  Routers.
+
+endmenu
