@@ -13,12 +13,15 @@ target-list:
 .PHONY: %_defconfig
 %_defconfig:
 	@if [ ! -f ${external_conf}/$@ ]; then \
-		echo no config file found for $@; \
-		exit 1; \
+		$(call print-info,no local config file found for:,$@); \
+		$(call print-info,trying buildroot default config,); \
+		cd buildroot && make defconfig BR2_EXTERNAL=${external_tree} \
+		DEFCONFIG=configs/$@; \
+	else \
+		$(call print-info,using config file:,$@); \
+		cd buildroot && make defconfig BR2_EXTERNAL=${external_tree} \
+			DEFCONFIG=${external_conf}/$@; \
 	fi
-	@$(call print-info,using config file:,$@)
-	@cd buildroot && make defconfig BR2_EXTERNAL=${external_tree} \
-		DEFCONFIG=${external_conf}/$@
 
 %:
 	@echo "transfert $@ to buildroot"
