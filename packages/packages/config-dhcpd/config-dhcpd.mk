@@ -5,8 +5,6 @@
 ################################################################################
 
 CONFIG_DHCPD_SRC := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))src
-CONFIG_DHCPD_PORTS = \
-	$(call qstrip,$(BR2_PACKAGE_CONFIG_DHCPD_PORTS))
 
 config-dhcpd:
 	@echo "IINFO: configuring dhcpd"
