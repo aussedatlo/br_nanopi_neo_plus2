@@ -54,11 +54,9 @@ target-list:
 build:
 ifdef silent
 	@$(call print-info,starting silent build,)
-	mkdir -p images
 	@cd buildroot && make | grep ">>>"
 else
 	@$(call print-info,starting build,)
-	mkdir -p images
 	@cd buildroot && make
 endif
 	cp ${img} ./images/
