@@ -1,0 +1,21 @@
+menu "config-wpa-supplicant"
+
+config BR2_CONFIG_WPA_SUPPLICANT
+	bool "config-wpa-supplicant"
+	select BR2_PACKAGE_WPA_SUPPLICANT
+	help
+	  Basic configuration for wpa supplicant.
+
+config BR2_CONFIG_WPA_SUPPLICANT_SSID
+	string "ssid"
+	depends on BR2_CONFIG_WPA_SUPPLICANT
+	help
+	  SSID.
+
+config BR2_CONFIG_WPA_SUPPLICANT_PSK
+	string "password"
+	depends on BR2_CONFIG_WPA_SUPPLICANT
+	help
+	  Password.
+
+endmenu
