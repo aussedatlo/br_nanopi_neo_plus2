@@ -37,13 +37,13 @@ target-list:
 			echo "" >> $@; \
 			echo "# Custom kernel config" >> $@; \
 			echo "BR2_LINUX_KERNEL_USE_CUSTOM_CONFIG=y" >> $@; \
-			echo "BR2_LINUX_KERNEL_CUSTOM_CONFIG_FILE=\"\$$(TOP_DIR)/../configs/$*/$$linux_conf\"" >> $@; \
+			echo "BR2_LINUX_KERNEL_CUSTOM_CONFIG_FILE=\"\$$(TOPDIR)/../configs/$*/$$linux_conf\"" >> $@; \
 		fi; \
 	done
 	@mkdir -p overlays/$*
 	@echo "" >> $@
 	@echo "# Default platform overlay" >> $@
-	@echo "BR2_ROOTFS_OVERLAY=\"\$$(TOP_DIR)/../overlays/$*\"" >> $@
+	@echo "BR2_ROOTFS_OVERLAY=\"\$$(TOPDIR)/../overlays/$*\"" >> $@
 	@cd buildroot && make defconfig BR2_EXTERNAL=${external_tree} \
 		BR2_DEFCONFIG=${root_dir}/$@;
 
