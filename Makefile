@@ -59,7 +59,6 @@ else
 	@$(call print-info,starting build,)
 	@cd buildroot && make
 endif
-	cp ${img} ./images/
 
 .PHONY: clean-soft
 clean-soft:
