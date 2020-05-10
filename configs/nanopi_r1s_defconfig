@@ -42,9 +42,9 @@ BR2_PACKAGE_HOST_DOSFSTOOLS=y
 BR2_PACKAGE_HOST_GENIMAGE=y
 BR2_PACKAGE_HOST_MTOOLS=y
 BR2_TARGET_GENERIC_ISSUE="Welcome to FriendlyARM Nanopi R1S"
-BR2_ROOTFS_POST_BUILD_SCRIPT="$(TOPDIR)/../configs/nanopi-r1s/post-build.sh"
+BR2_ROOTFS_POST_BUILD_SCRIPT="$(TOPDIR)/../configs/nanopi_r1s/post-build.sh"
 BR2_ROOTFS_POST_IMAGE_SCRIPT="support/scripts/genimage.sh"
-BR2_ROOTFS_POST_SCRIPT_ARGS="-c $(TOPDIR)/../configs/nanopi-r1s/genimage.cfg"
+BR2_ROOTFS_POST_SCRIPT_ARGS="-c $(TOPDIR)/../configs/nanopi_r1s/genimage.cfg"
 
 # System
 BR2_TARGET_GENERIC_HOSTNAME="Nanopi"
