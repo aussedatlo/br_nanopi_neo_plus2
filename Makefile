@@ -1,7 +1,6 @@
 root_dir:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 external_tree = ${root_dir}/packages
 external_conf = ${root_dir}/configs
-img = ${root_dir}/buildroot/output/images/sdcard.img
 
 .DEFAULT_GOAL := build
 
