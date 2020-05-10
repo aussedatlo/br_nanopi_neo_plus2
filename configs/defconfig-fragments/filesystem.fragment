@@ -1,0 +1,3 @@
+
+# Users
+BR2_ROOTFS_USERS_TABLES="$(TOPDIR)/../configs/users_table.txt"

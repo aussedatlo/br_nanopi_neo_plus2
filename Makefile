@@ -13,14 +13,21 @@ target-list:
 %_defconfig:
 	@if [ ! -f ${external_conf}/$@ ]; then \
 		$(call print-info,no local config file found for:,$@); \
-		$(call print-info,trying buildroot default config,); \
-		cd buildroot && make defconfig BR2_EXTERNAL=${external_tree} \
-		DEFCONFIG=configs/$@; \
+		file=$$(find -name $@); \
+		echo "found $$file"; \
+		cp $$file $@; \
 	else \
 		$(call print-info,using config file:,$@); \
-		cd buildroot && make defconfig BR2_EXTERNAL=${external_tree} \
-			DEFCONFIG=${external_conf}/$@; \
+		cp configs/$@ $@; \
 	fi
+	@for fragment in \
+		$$(find configs/defconfig-fragments -type f -name "*.fragment"); \
+	do \
+		echo "adding fragment file $$fragment"; \
+		cat $$fragment >> $@; \
+	done
+	@cd buildroot && make defconfig BR2_EXTERNAL=${external_tree} \
+		BR2_DEFCONFIG=${root_dir}/$@;
 
 %:
 	@echo "transfert $@ to buildroot"

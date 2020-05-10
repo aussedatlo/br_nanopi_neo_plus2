@@ -1,1 +1,1 @@
-nanopi -1 nanopi -1 =nanopi /home/nanopi /bin/bash sudo
+brpi -1 brpi -1 =brpi /home/brpi /bin/bash sudo

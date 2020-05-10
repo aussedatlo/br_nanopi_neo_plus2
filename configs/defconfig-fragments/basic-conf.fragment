@@ -1,0 +1,5 @@
+
+# Basic configurations packages
+BR2_CONFIG_BASH=y
+BR2_CONFIG_OPENSSH=y
+BR2_CONFIG_SUDO_PAM=y
