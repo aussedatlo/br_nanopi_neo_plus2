@@ -1,0 +1,27 @@
+#!/bin/sh
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/usr/sbin/hostapd
+NAME=hostapd
+DESC="Hostapd"
+OPTS="/etc/hostapd/hostapd.conf"
+
+case "$1" in
+  start)
+	echo -n "Starting $DESC: "
+	$DAEMON $OPTS &
+	echo "$NAME."
+	;;
+  stop)
+	echo -n "Stopping $DESC: "
+	killall $DAEMON
+	echo "$NAME."
+	;;
+  *)
+	N=/etc/init.d/$NAME
+	echo "Usage: $N {start|stop}" >&2
+	exit 1
+	;;
+esac
+
+exit 0

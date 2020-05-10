@@ -1,0 +1,31 @@
+menu "config-hostapd"
+
+config BR2_PACKAGE_CONFIG_HOSTAPD
+	bool "basic configuration"
+	select BR2_PACKAGE_BRIDGE_UTILS
+	select BR2_PACKAGE_HOSTAPD
+	help
+	  Basic configuration for hostapd.
+
+config BR2_PACKAGE_CONFIG_HOSTAPD_IFACE
+	string "interface name"
+	default "wlan0"
+	depends on BR2_PACKAGE_CONFIG_HOSTAPD
+	help
+	  interface name.
+
+config BR2_PACKAGE_CONFIG_HOSTAPD_SSID
+	string "ssid"
+	default "BuildrootWifi"
+	depends on BR2_PACKAGE_CONFIG_HOSTAPD
+	help
+	  Service Set Identifier.
+
+config BR2_PACKAGE_CONFIG_HOSTAPD_PASSPHRASE
+	string "passphrase"
+	default "Password2020!"
+	depends on BR2_PACKAGE_CONFIG_HOSTAPD
+	help
+	  Network password.
+
+endmenu
