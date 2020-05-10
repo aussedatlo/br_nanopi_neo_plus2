@@ -26,6 +26,20 @@ target-list:
 		echo "adding fragment file $$fragment"; \
 		cat $$fragment >> $@; \
 	done
+	@for linux_conf in linux_config linux_defconfig; do \
+		if [ -f configs/$*/$$linux_conf ]; then \
+			echo "found $$linux_conf for $*"; \
+			sed -i '/BR2_LINUX_KERNEL_USE_DEFCONFIG/d' $@; \
+			sed -i '/BR2_LINUX_KERNEL_USE_ARCH_DEFAULT_CONFIG/d' $@; \
+			sed -i '/BR2_LINUX_KERNEL_USE_CUSTOM_CONFIG/d' $@; \
+			sed -i '/BR2_LINUX_KERNEL_DEFCONFIG/d' $@; \
+			sed -i '/BR2_LINUX_KERNEL_CUSTOM_CONFIG_FILE/d' $@; \
+			echo "" >> $@; \
+			echo "# Custom kernel config" >> $@; \
+			echo "BR2_LINUX_KERNEL_USE_CUSTOM_CONFIG=y" >> $@; \
+			echo "BR2_LINUX_KERNEL_CUSTOM_CONFIG_FILE=\"\$$(TOP_DIR)/../configs/$*/$$linux_conf\"" >> $@; \
+		fi; \
+	done
 	@cd buildroot && make defconfig BR2_EXTERNAL=${external_tree} \
 		BR2_DEFCONFIG=${root_dir}/$@;
 
