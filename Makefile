@@ -40,6 +40,10 @@ target-list:
 			echo "BR2_LINUX_KERNEL_CUSTOM_CONFIG_FILE=\"\$$(TOP_DIR)/../configs/$*/$$linux_conf\"" >> $@; \
 		fi; \
 	done
+	@mkdir -p overlays/$*
+	@echo "" >> $@
+	@echo "# Default platform overlay" >> $@
+	@echo "BR2_ROOTFS_OVERLAY=\"\$$(TOP_DIR)/../overlays/$*\"" >> $@
 	@cd buildroot && make defconfig BR2_EXTERNAL=${external_tree} \
 		BR2_DEFCONFIG=${root_dir}/$@;
 
