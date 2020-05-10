@@ -9,8 +9,7 @@ target-list:
 	@$(call print-info,available defconfigs:,)
 	@$(call list-defconfigs,$(TOPDIR))
 
-.PHONY: %_defconfig
-%_defconfig:
+%_defconfig: clean-defconfigs
 	@if [ ! -f ${external_conf}/$@ ]; then \
 		$(call print-info,no local config file found for:,$@); \
 		file=$$(find -name $@); \
@@ -65,6 +64,10 @@ clean-soft:
 	@find buildroot/output/build -maxdepth 1 -type d -print | grep -Ev "host|linux-headers" | sed "1 d" | xargs rm -rf
 	@rm -rf buildroot/output/images images/* buildroot/output/target
 
+.PHONY: clean-defconfigs
+clean-defconfigs:
+	@rm -f ./*_defconfig
+
 .PHONY: help
 help:
 	@echo "All unknown command will be transfered to buildroot"
@@ -72,6 +75,7 @@ help:
 	@echo "build (default)		- compile distribution, use silent=1 for silent build"
 	@echo "clean			- clean all"
 	@echo "clean-soft		- clean only non host package and rebuild target folder"
+	@echo "clean-defconfigs		- clean generated defconfigs"
 	@echo "build (default)		- compile distribution, use silent=1 for silent build"
 	@echo "<target>_defconfig	- set <target> defconfig"
 	@echo "target-list		- list all defconfigs in ./configs"
