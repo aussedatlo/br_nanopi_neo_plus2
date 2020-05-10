@@ -19,7 +19,6 @@ config BR2_PACKAGE_CONFIG_IPTABLES_INPUT_OUTPUT
 
 config BR2_PACKAGE_CONFIG_IPTABLES_INPUT
 	bool "input"
-	default "y"
 	help
 	  Blocking only input traffic.
 
