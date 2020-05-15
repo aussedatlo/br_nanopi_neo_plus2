@@ -1,0 +1,5 @@
+config BR2_CONFIG_OH_MY_ZSH
+	bool "config-oh-my-zsh"
+	select BR2_PACKAGE_OH_MY_ZSH
+	help
+	  Configure oh-my-zsh.
