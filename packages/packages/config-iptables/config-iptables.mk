@@ -94,14 +94,14 @@ ifeq ($(BR2_PACKAGE_CONFIG_IPTABLES_INPUT),y)
 TARGET_CONFIGURE += config-iptables-allow-output
 endif
 
-ifeq ($(BR2_PACKAGE_SSHGUARD),y)
+ifeq ($(BR2_PACKAGE_CONFIG_IPTABLES)$(BR2_PACKAGE_SSHGUARD),yy)
 TARGET_CONFIGURE += config-iptables-sshguard
 endif
 
-ifeq ($(BR2_PACKAGE_OPENNTPD),y)
+ifeq ($(BR2_PACKAGE_CONFIG_IPTABLES)$(BR2_PACKAGE_OPENNTPD),yy)
 TARGET_CONFIGURE += config-iptables-ntp
 endif
 
-ifeq ($(BR2_PACKAGE_PYTHON_DOMAIN_CONNECT),y)
+ifeq ($(BR2_PACKAGE_CONFIG_IPTABLES)$(BR2_PACKAGE_PYTHON_DOMAIN_CONNECT),yy)
 TARGET_CONFIGURE += config-iptables-domain-connect
 endif
