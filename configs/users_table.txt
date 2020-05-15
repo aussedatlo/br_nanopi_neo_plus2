@@ -1,1 +1,1 @@
-brpi -1 brpi -1 =brpi /home/brpi /bin/bash sudo
+brpi -1 brpi -1 =brpi /home/brpi /bin/zsh sudo
