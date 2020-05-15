@@ -1,0 +1,8 @@
+config BR2_PACKAGE_OH_MY_ZSH
+	bool "oh-my-zsh"
+	select BR2_PACKAGE_ZSH
+	help
+	  A delightful community-driven framework for
+	  managing your zsh configuration.
+
+	  https://ohmyz.sh/

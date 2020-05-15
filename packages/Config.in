@@ -14,6 +14,7 @@ source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-wpa-supplicant/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/km-rtl8189es/Config.in"
 
 # softwares packages
+source "$BR2_EXTERNAL_PACKAGES_PATH/packages/oh-my-zsh/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/python-domain-connect/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/python-domain-connect-dyndns/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/python-publicsuffix/Config.in"
