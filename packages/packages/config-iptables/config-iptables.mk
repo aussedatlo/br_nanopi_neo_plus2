@@ -8,6 +8,7 @@ CONFIG_IPTABLES_SRC := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))src
 CONFIG_IPTABLES_PORTS = \
 	$(call qstrip,$(BR2_PACKAGE_CONFIG_IPTABLES_PORTS))
 
+.PHONY: config-iptables
 config-iptables:
 	@$(call MESSAGE,"Configuring iptables")
 	@echo "INFO: installing default S35iptables init script"
@@ -23,6 +24,7 @@ config-iptables:
 			>> $(TARGET_DIR)/etc/init.d/S35iptables; \
 	done
 
+.PHONY: config-iptables-ping
 config-iptables-ping:
 	@echo "INFO: Allow ping requests"
 	@echo "" >> $(TARGET_DIR)/etc/init.d/S35iptables
@@ -32,6 +34,7 @@ config-iptables-ping:
 	@echo "iptables -A INPUT  -p icmp  -j ACCEPT" \
 			>> $(TARGET_DIR)/etc/init.d/S35iptables
 
+.PHONY: config-iptables-dns
 config-iptables-dns:
 	@echo "INFO: Allow ping requests"
 	@echo "" >> $(TARGET_DIR)/etc/init.d/S35iptables
@@ -41,6 +44,7 @@ config-iptables-dns:
 	@echo "iptables -A OUTPUT -p udp --dport 53 -j ACCEPT" \
 			>> $(TARGET_DIR)/etc/init.d/S35iptables
 
+.PHONY: config-iptables-ntp
 config-iptables-ntp:
 	@echo "INFO: Allow ntp requests"
 	@echo "" >> $(TARGET_DIR)/etc/init.d/S35iptables
@@ -50,11 +54,13 @@ config-iptables-ntp:
 	@echo "iptables -A OUTPUT -p udp --dport 123 -j ACCEPT" \
 			>> $(TARGET_DIR)/etc/init.d/S35iptables
 
+.PHONY: config-iptables-allow-output
 config-iptables-allow-output:
 	@$(call REPLACE_LINE,iptables -P OUTPUT DROP,iptables -P OUTPUT ACCEPT,\
 		$(TARGET_DIR)/etc/init.d/S35iptables)
 	@echo "INFO: allowing output traffic"
 
+.PHONY: config-iptables-sshguard
 config-iptables-sshguard:
 	@echo "INFO: setting up iptables for sshguard"
 	@$(call ADD_LINE_AFTER,\
@@ -68,6 +74,7 @@ config-iptables-sshguard:
 		$(TARGET_DIR)/etc/init.d/S35iptables)
 	@sed -i '/iptables/d' $(TARGET_DIR)/etc/init.d/S49sshguard
 
+.PHONY: config-iptables-domain-connect
 config-iptables-domain-connect:
 	@echo "INFO: setting up iptables for domain-connect"
 	@echo "" >> $(TARGET_DIR)/etc/init.d/S35iptables
