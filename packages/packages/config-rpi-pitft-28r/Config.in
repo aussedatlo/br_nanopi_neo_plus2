@@ -1,0 +1,8 @@
+menu "config-rpi-pitft-28r"
+
+config BR2_CONFIG_RPI_PITFT_28R
+	bool "rpi-pitft-28r"
+	help
+	  Configure raspberrypi with adafruit pitft 2"8.
+
+endmenu
