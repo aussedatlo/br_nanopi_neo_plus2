@@ -10,6 +10,7 @@ source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-openssh/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-rpi-pitft-28r/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-oh-my-zsh/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-sudo-pam/Config.in"
+source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-weston-fbdev/Config.in"
 source "$BR2_EXTERNAL_PACKAGES_PATH/packages/config-wpa-supplicant/Config.in"
 
 # kernel modules packages

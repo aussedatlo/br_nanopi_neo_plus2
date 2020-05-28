@@ -1,0 +1,11 @@
+menu "config-weston-fbdev"
+
+config BR2_CONFIG_WESTON_FBDEV
+	bool "weston-fbdev"
+	select BR2_PACKAHE_WESTON
+	select BR2_PACKAGE_WESTON_DEFAULT_FBDEV
+	select BR2_PACKAGE_WESTON_FBDEV
+	help
+	  weston configuration with fbdev.
+
+endmenu
