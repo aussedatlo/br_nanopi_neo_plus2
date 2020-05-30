@@ -1,5 +1,6 @@
 
 # Basic configurations packages
+BR2_CONFIG_MDEV=y
 BR2_CONFIG_OH_MY_ZSH=y
 BR2_CONFIG_OPENSSH=y
 BR2_CONFIG_SUDO_PAM=y
