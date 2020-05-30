@@ -1,0 +1,23 @@
+--- a/Makefile
++++ b/Makefile
+@@ -7,6 +7,7 @@
+ LINT_PKG := github.com/golangci/golangci-lint/cmd/golangci-lint
+ GOACC_PKG := github.com/ory/go-acc
+
++PATH := $(PATH)
+ GO_BIN := ${GOPATH}/bin
+ BTCD_BIN := $(GO_BIN)/btcd
+ GOMOBILE_BIN := GO111MODULE=off $(GO_BIN)/gomobile
+@@ -38,10 +39,10 @@
+ GOINSTALL := GO111MODULE=on go install -v
+ GOTEST := GO111MODULE=on go test
+
+-GOVERSION := $(shell go version | awk '{print $$3}')
++GOVERSION := $(shell env PATH=$(PATH) go version | awk '{print $$3}')
+ GOFILES_NOVENDOR = $(shell find . -type f -name '*.go' -not -path "./vendor/*")
+ GOLIST := go list -deps $(PKG)/... | grep '$(PKG)'| grep -v '/vendor/'
+-GOLISTCOVER := $(shell go list -deps -f '{{.ImportPath}}' ./... | grep '$(PKG)' | sed -e 's/^$(ESCPKG)/./')
++GOLISTCOVER := $(shell env PATH=$(PATH) go list -deps -f '{{.ImportPath}}' ./... | grep '$(PKG)' | sed -e 's/^$(ESCPKG)/./')
+
+ RM := rm -f
+ CP := cp

@@ -1,6 +1,5 @@
 config BR2_PACKAGE_LND
 	bool "lnd"
-	select BR2_PACKAGE_BITCOIN
 	help
 	  Lightning Network Daemon.
 
