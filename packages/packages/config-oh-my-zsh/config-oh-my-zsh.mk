@@ -15,6 +15,9 @@ config-oh-my-zsh:
 		$(call REPLACE_LINE,\$$HOME\/.oh-my-zsh,\/usr\/share\/oh-my-zsh,\
 		$$user/.zshrc); \
 		$(call REPLACE_LINE,robbyrussell,dieter,$$user/.zshrc); \
+		$(call ADD_LINE_AFTER,\
+			export PATH,source /etc/profile,\
+			$$user/.zshrc) \
 	done
 
 
