@@ -30,6 +30,6 @@ config-mdev:
 		$(TARGET_DIR)/lib/mdev
 
 
-ifeq ($(BR2_PACKAGE_CONFIG_MDEV),y)
+ifeq ($(BR2_CONFIG_MDEV),y)
 TARGET_CONFIGURE += config-mdev
 endif

@@ -1,6 +1,6 @@
 menu "config-mdev"
 
-config BR2_PACKAGE_CONFIG_MDEV
+config BR2_CONFIG_MDEV
 	bool "automount hotplug devices"
 	help
 	  Auto mount sd/usb devices.
