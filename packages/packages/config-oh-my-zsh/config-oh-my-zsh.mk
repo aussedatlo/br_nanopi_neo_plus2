@@ -17,7 +17,7 @@ config-oh-my-zsh:
 		$(call REPLACE_LINE,robbyrussell,dieter,$$user/.zshrc); \
 		$(call ADD_LINE_AFTER,\
 			export PATH,source /etc/profile,\
-			$$user/.zshrc) \
+			$$user/.zshrc); \
 		$(call REPLACE_LINE,# export PATH=\$$HOME\/bin:\/usr\/local\/bin:\$$PATH,\
 			PATH=\/usr\/bin:\/usr\/sbin:\/bin:\$$HOME\/bin:\/sbin,\
 			$$user/.zshrc); \
